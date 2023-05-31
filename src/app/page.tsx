@@ -12,7 +12,7 @@ dayjs.locale(ptBr)
 interface Memory {
   id: string
   coverUrl: string
-  content: string
+  excerpt: string
   createdAt: string
 }
 
@@ -45,15 +45,16 @@ export default async function Home() {
             <time className="-ml-8 flex items-center gap-2 text-sm text-gray-100 before:h-px before:w-5 before:bg-gray-50">
               {dayjs(memory.createdAt).format('D[ de ]MMMM[, ]YYYY')}
             </time>
-            <Image
+            {memory.coverUrl && <Image
               className="aspect-video w-full rounded-lg object-cover"
               src={memory.coverUrl}
               width={592}
               height={280}
               alt=""
-            />
+            />}
+
             <p className="text-lg leading-relaxed text-gray-100">
-              {memory.content}
+              {memory.excerpt}
             </p>
 
             <Link
